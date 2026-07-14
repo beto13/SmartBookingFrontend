@@ -1,0 +1,16 @@
+export interface ApiResponse<T> {
+  success: boolean;
+  data: T | null;
+  message: string | null;
+  errors: string[];
+}
+
+export interface PaginatedResult<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
