@@ -10,6 +10,12 @@ export interface CreateBookingInput {
   notes?: string;
 }
 
+export interface RescheduleBookingInput {
+  newSlotDate: string;
+  newSlotStartTime: string;
+  newSlotEndTime: string;
+}
+
 export const bookingService = {
   getAvailableSlots: (date: string) => httpClient.get<AvailableSlot[]>(`/slots/available?date=${date}`),
 
@@ -19,4 +25,7 @@ export const bookingService = {
     httpClient.get<PaginatedResult<Booking>>(`/bookings?pageNumber=${pageNumber}&pageSize=${pageSize}`),
 
   cancelBooking: (id: string) => httpClient.post<object>(`/bookings/${id}/cancel`),
+
+  rescheduleBooking: (id: string, input: RescheduleBookingInput) =>
+    httpClient.post<Booking>(`/bookings/${id}/reschedule`, input),
 };

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { useAvailableSlots } from '../../hooks/useAvailableSlots';
+import { SlotPicker } from '../../components/SlotPicker';
 import { useCreateBooking } from '../../hooks/useCreateBooking';
 import { useRequireAuth } from '../../hooks/useRequireAuth';
 import type { AvailableSlot, Booking } from '../../types/booking';
@@ -57,7 +57,6 @@ export function BookSlotPage() {
   const [date, setDate] = useState(today());
   const [selectedSlot, setSelectedSlot] = useState<AvailableSlot | null>(null);
   const [confirmedBooking, setConfirmedBooking] = useState<Booking | null>(null);
-  const { slots, isLoading, error } = useAvailableSlots(date);
   const { createBooking, isLoading: isSubmitting, error: submitError } = useCreateBooking();
 
   async function handleConfirm(orderReference: string, notes: string) {
@@ -103,19 +102,7 @@ export function BookSlotPage() {
         <input type="date" value={date} min={today()} onChange={(event) => setDate(event.target.value)} />
       </label>
 
-      {isLoading && <p>Cargando horarios...</p>}
-      {error && <p className="error-message">{error}</p>}
-      {!isLoading && !error && slots.length === 0 && <p>No hay horarios para ese día.</p>}
-
-      <ul className="slot-list">
-        {slots.map((slot) => (
-          <li key={slot.startTime}>
-            <button type="button" disabled={slot.available === 0} onClick={() => setSelectedSlot(slot)}>
-              {formatTime(slot.startTime)} - {formatTime(slot.endTime)} ({slot.available} disponibles)
-            </button>
-          </li>
-        ))}
-      </ul>
+      <SlotPicker date={date} onSelect={setSelectedSlot} />
 
       {selectedSlot && (
         <ConfirmBookingForm

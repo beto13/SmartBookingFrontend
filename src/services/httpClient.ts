@@ -2,6 +2,7 @@ import type { ApiResponse } from '../types/api';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const AUTH_TOKEN_KEY = 'smartbooking_token';
+export const AUTH_CHANGE_EVENT = 'smartbooking-auth-change';
 
 export class ApiError extends Error {
   readonly status: number;
@@ -22,6 +23,7 @@ export function getAuthToken(): string | null {
 export function setAuthToken(token: string | null): void {
   if (token) localStorage.setItem(AUTH_TOKEN_KEY, token);
   else localStorage.removeItem(AUTH_TOKEN_KEY);
+  window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {

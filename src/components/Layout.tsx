@@ -1,6 +1,9 @@
 import { Link, Outlet } from 'react-router-dom';
+import { useAuthToken } from '../hooks/useAuthToken';
 
 export function Layout() {
+  const token = useAuthToken();
+
   return (
     <div className="app-layout">
       <header className="app-header">
@@ -8,7 +11,14 @@ export function Layout() {
           SmartBooking
         </Link>
         <nav>
-          <Link to="/admin/login">Operador / Admin</Link>
+          {token ? (
+            <>
+              <Link to="/reservar">Reservar turno</Link>
+              <Link to="/mis-reservas">Mis reservas</Link>
+            </>
+          ) : (
+            <Link to="/admin/login">Operador / Admin</Link>
+          )}
         </nav>
       </header>
       <main className="app-content">

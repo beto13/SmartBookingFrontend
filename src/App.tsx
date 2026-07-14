@@ -3,6 +3,7 @@ import { Layout } from './components/Layout';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { BookSlotPage } from './pages/customer/BookSlotPage';
 import { CustomerHomePage } from './pages/customer/CustomerHomePage';
+import { MyBookingsPage } from './pages/customer/MyBookingsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<CustomerHomePage />} />
         <Route path="/reservar" element={<BookSlotPage />} />
+        <Route path="/mis-reservas" element={<MyBookingsPage />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

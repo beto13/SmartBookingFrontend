@@ -127,3 +127,38 @@ body {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+.booking-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-item {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.booking-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.booking-actions button {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.reschedule-box {
+  margin-top: 12px;
+  padding: 12px;
+  border-top: 1px dashed var(--border);
+}
