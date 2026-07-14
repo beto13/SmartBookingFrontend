@@ -104,3 +104,26 @@ body {
   font-size: 14px;
   margin: 0;
 }
+
+.slot-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.slot-list button {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.slot-list button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

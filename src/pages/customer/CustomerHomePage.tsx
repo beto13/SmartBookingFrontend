@@ -1,8 +1,16 @@
-import type { FormEvent } from 'react';
+import { useEffect, type FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMagicLinkAuth } from '../../hooks/useMagicLinkAuth';
 
 export function CustomerHomePage() {
   const { step, email, isLoading, error, requestCode, verifyCode, reset } = useMagicLinkAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (step === 'authenticated') {
+      navigate('/reservar', { replace: true });
+    }
+  }, [step, navigate]);
 
   function handleRequestSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -17,12 +25,7 @@ export function CustomerHomePage() {
   }
 
   if (step === 'authenticated') {
-    return (
-      <section>
-        <h1>¡Listo!</h1>
-        <p>Tu sesión quedó iniciada. Ya vas a poder ver los horarios disponibles y reservar tu turno acá.</p>
-      </section>
-    );
+    return <p>Redirigiendo...</p>;
   }
 
   if (step === 'verify') {
