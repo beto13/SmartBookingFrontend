@@ -10,4 +10,7 @@ export const authService = {
 
   login: (email: string, password: string) =>
     httpClient.post<AuthResult>('/auth/login', { email, password }),
+
+  register: (name: string, email: string, password: string, role: number) =>
+    httpClient.post<AuthResult>('/auth/register', { name, email, password, role }),
 };

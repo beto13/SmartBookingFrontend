@@ -22,6 +22,7 @@ export function Layout() {
               <Link to="/admin/bookings">Reservas</Link>
               <Link to="/admin/blocked-slots">Bloqueos</Link>
               {role === 'Admin' && <Link to="/admin/schedule">Agenda</Link>}
+              {role === 'Admin' && <Link to="/admin/register">Usuarios</Link>}
             </>
           )}
           {role === null && <Link to="/admin/login">Operador / Admin</Link>}

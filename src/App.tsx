@@ -3,6 +3,7 @@ import { Layout } from './components/Layout';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { BlockedSlotsPage } from './pages/admin/BlockedSlotsPage';
 import { BookingsListPage } from './pages/admin/BookingsListPage';
+import { RegisterSystemUserPage } from './pages/admin/RegisterSystemUserPage';
 import { ScheduleConfigPage } from './pages/admin/ScheduleConfigPage';
 import { BookSlotPage } from './pages/customer/BookSlotPage';
 import { CustomerHomePage } from './pages/customer/CustomerHomePage';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin/bookings" element={<BookingsListPage />} />
         <Route path="/admin/schedule" element={<ScheduleConfigPage />} />
         <Route path="/admin/blocked-slots" element={<BlockedSlotsPage />} />
+        <Route path="/admin/register" element={<RegisterSystemUserPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
