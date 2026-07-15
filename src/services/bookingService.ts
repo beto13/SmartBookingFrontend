@@ -21,7 +21,7 @@ export const bookingService = {
 
   createBooking: (input: CreateBookingInput) => httpClient.post<Booking>('/bookings', input),
 
-  getMyBookings: (pageNumber = 1, pageSize = 10) =>
+  getBookings: (pageNumber = 1, pageSize = 10) =>
     httpClient.get<PaginatedResult<Booking>>(`/bookings?pageNumber=${pageNumber}&pageSize=${pageSize}`),
 
   cancelBooking: (id: string) => httpClient.post<object>(`/bookings/${id}/cancel`),

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SlotPicker } from '../../components/SlotPicker';
+import { useBookings } from '../../hooks/useBookings';
 import { useCancelBooking } from '../../hooks/useCancelBooking';
-import { useMyBookings } from '../../hooks/useMyBookings';
 import { useRequireAuth } from '../../hooks/useRequireAuth';
 import { useRescheduleBooking } from '../../hooks/useRescheduleBooking';
 import type { AvailableSlot, Booking } from '../../types/booking';
@@ -50,9 +50,9 @@ function RescheduleSection({ booking, onDone, onCancel }: RescheduleSectionProps
 }
 
 export function MyBookingsPage() {
-  useRequireAuth();
+  useRequireAuth('Customer');
 
-  const { bookings, isLoading, error, refetch } = useMyBookings();
+  const { bookings, isLoading, error, refetch } = useBookings();
   const { cancelBooking, isLoading: isCancelling, error: cancelError } = useCancelBooking();
   const [reschedulingId, setReschedulingId] = useState<string | null>(null);
 

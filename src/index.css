@@ -142,6 +142,12 @@ body {
   padding: 12px;
 }
 
+.booking-meta {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
 .booking-actions {
   display: flex;
   gap: 8px;
@@ -155,6 +161,19 @@ body {
   background: var(--bg);
   color: var(--text);
   cursor: pointer;
+}
+
+.working-day-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
 }
 
 .reschedule-box {

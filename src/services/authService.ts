@@ -7,4 +7,7 @@ export const authService = {
 
   validateMagicLink: (token: string) =>
     httpClient.post<AuthResult>('/auth/magic-link/validate', { token }),
+
+  login: (email: string, password: string) =>
+    httpClient.post<AuthResult>('/auth/login', { email, password }),
 };

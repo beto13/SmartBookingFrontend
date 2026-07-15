@@ -52,7 +52,7 @@ function ConfirmBookingForm({ slot, isSubmitting, error, onConfirm, onCancel }: 
 }
 
 export function BookSlotPage() {
-  useRequireAuth();
+  useRequireAuth('Customer');
 
   const [date, setDate] = useState(today());
   const [selectedSlot, setSelectedSlot] = useState<AvailableSlot | null>(null);
