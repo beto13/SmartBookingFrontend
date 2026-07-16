@@ -10,6 +10,8 @@ export interface Booking {
   id: string;
   bookingCode: string;
   customerId: string;
+  customerName: string;
+  customerEmail: string;
   slotDate: string;
   slotStartTime: string;
   slotEndTime: string;
